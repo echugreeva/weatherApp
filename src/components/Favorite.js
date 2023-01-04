@@ -11,10 +11,10 @@ const Favorite = (props)=> {
         
         if(favKeys.length < 1) {
             return (
-                <>
+                <div style={{minHeight:"80vh"}}>
                 
                 <p>no favorites yet</p>
-                </>
+                </div>
                 
             )
         } else {

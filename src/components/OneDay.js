@@ -9,7 +9,7 @@ const OneDay = ({ keyC, keyF, city, country }) => {
     const [oneDay, setDay] = useState(OneDaysEx)
 
     const {chosen, favKeys, setFav} = useContext(AppContext)
-    
+    const [err, setErr]=useState('');
 
     console.log(chosen.key, chosen.city, chosen.country);
     console.log(`oneday component props` + keyC + keyF + city + country)
@@ -34,9 +34,24 @@ const OneDay = ({ keyC, keyF, city, country }) => {
             })
             .catch((err) => {
                 console.log(err)
+                setErr(err)
             })
         //  setDay(OneChange)
 
+    }
+
+    
+
+
+    useEffect(() => {
+        fetchWeather(toFetch)
+        console.log(`oneday fetched weather`)
+    }, [chosen, favKeys])
+
+    if (err) {
+        return (
+            <p>Oops data can't be fetched try again later</p>
+        )
     }
     let iconId;
     if (oneDay[0].WeatherIcon < 9) {
@@ -47,12 +62,6 @@ const OneDay = ({ keyC, keyF, city, country }) => {
 
     let imgSrc = `https://developer.accuweather.com/sites/default/files/${iconId}-s.png`
 
-
-
-    useEffect(() => {
-        fetchWeather(toFetch)
-        console.log(`oneday fetched weather`)
-    }, [chosen, favKeys])
 
     if (window.location.href.indexOf("favorites") > -1) {
 

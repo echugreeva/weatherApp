@@ -1,10 +1,11 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../App'
 // import FiveDaysEx from './FiveDaysWeatherEx.json';
 // import FiveChange from './FiveChange.json'
 
 const FiveDays = (props) => {
     const { fiveDays, setFiveDay, chosen } = useContext(AppContext)
+    const [err, setErr]=useState('');
     const fetchWeatherFive = (id) => {
         fetch(
             `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt&metric=true`
@@ -16,6 +17,7 @@ const FiveDays = (props) => {
             })
             .catch((err) => {
                 console.log(err)
+                setErr(err)
             })
 
 
@@ -33,7 +35,12 @@ const FiveDays = (props) => {
         fetchWeatherFive(chosen.key)
     }, [chosen])
 
-    if (!chosen.key) {
+    if (err) {
+        return (
+            <p>Oops data can't be fetched try again later</p>
+        )
+    }
+    else if (!chosen.key) {
         return (
             <p>No forecast yet</p>
         )
