@@ -7,7 +7,7 @@ const FiveDays = (props) => {
     const { fiveDays, setFiveDay, chosen } = useContext(AppContext)
     const fetchWeatherFive = (id) => {
         fetch(
-            `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt&metric=true`
+            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt&metric=true`
         )
             .then((res) => res.json())
             .then((data) => {

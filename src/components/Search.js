@@ -6,7 +6,7 @@ const Search = (props) => {
     const fetchCity = (input) => {
 
         fetch(
-            `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt&q=${input}`
+            `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt&q=${input}`
         )
             .then((res) => res.json())
             .then((data) => {

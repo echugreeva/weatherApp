@@ -25,7 +25,7 @@ const OneDay = ({ keyC, keyF, city, country }) => {
 
     const fetchWeather = (id) => {
         fetch(
-            `http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt`
+            `https://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=lBHawUgG9LRqS3TZNMPItFBx1VH87wIt`
         )
             .then((res) => res.json())
             .then((data) => {
